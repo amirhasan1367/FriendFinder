@@ -26,8 +26,8 @@
                         <input type="url" class="form-control valid" id="userLink" placeholder="Enter Link to Photo">
                 </div>
 
-                <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-                <select class="chosen valid" id = "q1"style="width:200px;">
+                <h4>Question 1</h4>
+                <select class="chosen valid" id="q1" style="width:200px;">
                         <option selected="selected">Choose...</option>
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -37,8 +37,8 @@
 
                 </select>
 
-                <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-                <select class="chosen valid" id = "q2" style="width:200px;">
+                <h4>Question 2</h4>
+                <select class="chosen valid" id="q2" style="width:200px;">
                         <option selected="selected">Choose...</option>
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -47,8 +47,8 @@
                         <option value="5">5 (Strongly Agree)</option>
 
                 </select>
-                <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-                <select class="chosen valid" id = "q3"style="width:200px;">
+                <h4>Question 3</h4>
+                <select class="chosen valid" id="q3" style="width:200px;">
                         <option selected="selected">Choose...</option>
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -156,36 +156,36 @@
         // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
         // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
         // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
-    var totalScore = 0;
+        var totalScore = 0;
 
-// function addScores(id){
-//         for (var i=0; i<10; i++){
-//                         $(id + [i]).val() = answer;
-//                         answer.push(scoreArray);
-//                 };
+        // function addScores(id){
+        //         for (var i=0; i<10; i++){
+        //                         $(id + [i]).val() = answer;
+        //                         answer.push(scoreArray);
+        //                 };
 
-// };
+        // };
 
-// var friends = require("../data/friends.js");
+        // var friends = require("../data/friends.js");
 
-    $(".chosen-select").chosen();
+        $(".chosen-select").chosen();
 
-var difference=[];
+        var difference = [];
 
 
-        $(".submit").on("click", function(event) {
-          event.preventDefault();
-    
-      
-          
-          
+        $(".submit").on("click", function (event) {
+                event.preventDefault();
 
 
 
 
 
 
-          var newFriend = {
+
+
+
+
+                var newFriend = {
                         name: $("#userName").val().trim(),
                         photo: $("#userLink").val().trim(),
                         scores: [
@@ -218,39 +218,39 @@ var difference=[];
 
                 $.post("/api/friends", newFriend, function (data) {
 
-                                // If a table is available... tell user they are booked.
-                                if (data) {
-                                        alert("Yay! You are have a new friend!");
-                                }
+                        // If a table is available... tell user they are booked.
+                        if (data) {
+                                alert("Yay! You are have a new friend!");
+                        }
 
-                                // If a table is available... tell user they on the waiting list.
-                                else {
-                                        alert("Sorry you are on the friend wait list");
-                                }
-
-
-                        });
+                        // If a table is available... tell user they on the waiting list.
+                        else {
+                                alert("Sorry you are on the friend wait list");
+                        }
 
 
+                });
 
 
-         
+
+
+
 
 
                 $.get("/api/friends", function (req, res) {
                         console.log(req);
-                        for (i=0; i<req.length; i++){
+                        for (i = 0; i < req.length; i++) {
                                 console.log(req[i].totalScore);
-                                if (req[i].totalScore === newFriend.totalScore){
+                                if (req[i].totalScore === newFriend.totalScore) {
 
                                 }
-                                else if (req[i].totalScore)
+                                else if (req[i].totalScore){}
                         }
-            
+
 
 
                 });
-    });
+        });
 
 
-    </script>
+</script>
